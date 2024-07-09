@@ -59,7 +59,7 @@ func Update(c *gin.Context) {
 		return
 	}
 
-	database.DB.Model(&student).UpdateColumns(student)
+	database.DB.Save(&student)
 
 	c.JSON(200, student)
 }
