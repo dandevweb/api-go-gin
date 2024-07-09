@@ -84,3 +84,13 @@ func GetByCpf(c *gin.Context) {
 
 	c.JSON(200, student)
 }
+
+func ShowIndexPage(c *gin.Context) {
+	var students []models.Student
+	database.DB.Find(&students)
+	c.HTML(http.StatusOK, "index.html", gin.H{"students": students})
+}
+
+func NotFoundRoute(c *gin.Context) {
+	c.HTML(http.StatusNotFound, "404.html", nil)
+}
